@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   user: { id: number, name: string };
+  paramsSubscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -18,7 +20,7 @@ export class UserComponent implements OnInit {
     };
     //params is an Observable, allowing you to work with asynchronous tasks.
     //An Observable allows you to subscribe to an event that MIGHT happen in the future, without having to wait for it
-    this.route.params.subscribe(
+    this.paramsSubscription = this.route.params.subscribe(
       //Checks for params changes
       (params: Params) => {
         //What will be executed when params changes
@@ -27,6 +29,11 @@ export class UserComponent implements OnInit {
 
       }
     );
+  }
+
+  ngOnDestroy() {
+    //Not needed, because Angular does this for you on ngOnit
+    this.paramsSubscription.unsubscribe();
   }
 
 }
