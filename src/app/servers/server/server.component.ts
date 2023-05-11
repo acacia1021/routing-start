@@ -26,7 +26,14 @@ export class ServerComponent implements OnInit {
   }
 
   onEdit() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    // this.router.navigate(['edit'], {relativeTo: this.route});
+
+    // We would use merge if we wanted to merge previous params with current ones, but since we do not, we will ise preserve instead
+    // this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'merge'});
+
+    // Preserve would override default behaviour and keep the old params
+    this.router.navigate(['edit'], { relativeTo: this.route, queryParamsHandling: 'preserve' });
+
   }
 
 }
