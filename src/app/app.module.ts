@@ -12,6 +12,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   //Example for localhost:4200/users
@@ -47,7 +48,17 @@ const appRoutes: Routes = [
   // },
   // {
   //   path: 'servers/:id/edit', component: EditServerComponent
-  // }
+  // },
+  {
+    path: 'not-found', component: PageNotFoundComponent
+  },
+  {
+    path: 'something', redirectTo: '/not-found'
+  },
+  //This is the catch all wildcard for paths -- needs to be the last one in the array of routes, as the routes are parsed from top to bottom
+  {
+    path: '**', redirectTo: '/not-found'
+  }
 ];
 
 @NgModule({
@@ -58,7 +69,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
