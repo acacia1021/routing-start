@@ -14,6 +14,8 @@ import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 
 // const appRoutes: Routes = [
 //   //TYPICALLY, if you have more than 3 routes, you will create an entirely new file to hold the routes
@@ -86,7 +88,7 @@ import { AppRoutingModule } from './app-routing.module';
     // RouterModule.forRoot(appRoutes),
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
