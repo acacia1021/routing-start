@@ -55,6 +55,10 @@ const appRoutes: Routes = [
   {
     path: 'something', redirectTo: '/not-found'
   },
+
+  // //You would need to add the pathMatch: part if your main path will collide with another
+  // { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' },
+
   //This is the catch all wildcard for paths -- needs to be the last one in the array of routes, as the routes are parsed from top to bottom
   {
     path: '**', redirectTo: '/not-found'
