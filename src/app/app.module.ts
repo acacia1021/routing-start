@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 // const appRoutes: Routes = [
 //   //TYPICALLY, if you have more than 3 routes, you will create an entirely new file to hold the routes
@@ -88,7 +89,7 @@ import { AuthGuardService } from './auth-guard.service';
     // RouterModule.forRoot(appRoutes),
     AppRoutingModule
   ],
-  providers: [ServersService, AuthService, AuthGuardService],
+  providers: [ServersService, AuthService, AuthGuardService, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
