@@ -57,6 +57,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+    // imports: [
+    //     //Hash informs the webserver to only care about the content BEFORE the #, in case there is no return of the index.html, which would return normally in case of a 404 or similar error
+    //     RouterModule.forRoot(appRoutes, {useHash: true})
+    // ],
     imports: [
         RouterModule.forRoot(appRoutes)
     ],
